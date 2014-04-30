@@ -2,10 +2,14 @@
 lock '3.2.1'
 
 set :application, 'my_app_name'
+set :user, "root"
 set :repo_url, 'git@example.com:me/my_repo.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+set :branch, 'master'
+set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+
 
 # Default deploy_to directory is /var/www/my_app
 # set :deploy_to, '/var/www/my_app'
@@ -20,7 +24,7 @@ set :repo_url, 'git@example.com:me/my_repo.git'
 # set :log_level, :debug
 
 # Default value for :pty is false
-# set :pty, true
+ set :pty, true
 
 # Default value for :linked_files is []
 # set :linked_files, %w{config/database.yml}
